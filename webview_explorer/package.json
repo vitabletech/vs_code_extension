@@ -1,0 +1,66 @@
+{
+  "name": "calico-colors",
+  "displayName": "Calico Colors",
+  "description": "VSCode extension for managing and inserting colors into your code.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vitabletech/vs_code_extension.git"
+	},
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "calicoColors.addColor",
+        "category": "Calico Colors",
+        "title": "Add Color"
+      },
+      {
+        "command": "calicoColors.clearColors",
+        "category": "Calico Colors",
+        "title": "Clear Colors",
+        "icon": "$(clear-all)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "calicoColors.clearColors",
+          "group": "navigation",
+          "when": "view == calicoColors.colorsView"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+				{
+					"type": "webview",
+					"id": "calicoColors.colorsView",
+					"name": "Calico Colors"
+				}
+			]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  }
+}
